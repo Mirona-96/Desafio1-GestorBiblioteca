@@ -74,5 +74,10 @@ namespace GestaoBiblioteca
             emprestimos.Add(emprestimo);
         }
 
+        public void ConsultarEmprestimos()
+        {
+
+        }
+
     }
 }
