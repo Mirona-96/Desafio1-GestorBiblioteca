@@ -13,33 +13,22 @@
             IdUsuario = usuario.IdUsuario;
         }
 
-
-
         public void AtribuirLivro(Livro livro)
         {
             IdLivro = livro.IdLivro; 
         }
 
-        public void Consultarlivro(Livro livro)
+        public string ConsultarNomeLivro(Livro livro)
         {
             //metodo que com base no id do livro, pega o nome do livro
+            return livro.Titulo;
         }
 
-        public void ConsultarUsuario(Usuario usuario)
+        public string ConsultarNomeUsuario(Usuario usuario)
         {
-            //metodo que com base no id do usuario, pega o nome do usuario+
+            return usuario.Nome;
         }
-        public void DevolverLivro(DateTime data)
-        {
-            if (data > DataDevolucao)
-            {
-                int diasAtraso = (data - DataDevolucao).Days;
-                Console.WriteLine($"Devolução em atraso com {diasAtraso} dias.");
-            }
-            else
-            {
-                Console.WriteLine("Devolução dentro do prazo");
-            }
-        }
+
+
     }
 }

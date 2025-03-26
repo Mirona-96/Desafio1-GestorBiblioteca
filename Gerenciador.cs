@@ -57,19 +57,20 @@ namespace GestaoBiblioteca
                     $"{"ISBN:",-20}   {livro.ISBN}\n" +
                     $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
                 }
-                else
-                {
-                    Console.WriteLine("Livro não encontrado.");
-                }
             }
         }
 
-        public void AdicionarUsuario(Usuario usuario)
+        public void RemoverLivro(int index)
+        {
+            livros.RemoveAt(index);
+        }
+
+        public void CadastrarUsuario(Usuario usuario)
         {
             usuarios.Add(usuario);
         }
 
-        public void AdicionarEmprestimo (Emprestimo emprestimo, Livro livro, Usuario usuario)
+        public void CadastrarEmprestimo (Emprestimo emprestimo, Livro livro, Usuario usuario)
         {
             emprestimo.AtribuirLivro(livro);
             emprestimo.AtribuirUsuario(usuario);
@@ -85,10 +86,23 @@ namespace GestaoBiblioteca
             {
                 Console.WriteLine($" Empréstimo #{index}\n" +
                     $"{"Codigo de Empréstimo:",-20} {emprestimo.IdEmprestimo}\n" +
-                    $"{"Livro:",-20}   {emprestimo.Consultarlivro}\n" +
-                    $"{"Usuario:",-20}   {emprestimo.ConsultarUsuario}\n" +
+                    $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro}\n" +
+                    $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario}\n" +
                     $"{"Data do Empréstimo:",-20}  {emprestimo.DataEmprestimo}\n" +
                     $"{"Data da Devolução: ",-20} {emprestimo.DataDevolucao}");
+            }
+        }
+
+        public void DevolverLivro(DateTime data, Emprestimo emprestimo)
+        {
+            if (data > emprestimo.DataDevolucao)
+            {
+                int diasAtraso = (data - emprestimo.DataDevolucao).Days;
+                Console.WriteLine($"Devolução em atraso com {diasAtraso} dias.");
+            }
+            else
+            {
+                Console.WriteLine("Devolução dentro do prazo");
             }
         }
     }
