@@ -69,14 +69,14 @@ namespace GestaoBiblioteca
             usuarios.Add(usuario);
         }
 
-        public void AdicionarEmprestimo(Emprestimo emprestimo, Livro livro, Usuario usuario)
+        public void AdicionarEmprestimo (Emprestimo emprestimo, Livro livro, Usuario usuario)
         {
             emprestimo.AtribuirLivro(livro);
             emprestimo.AtribuirUsuario(usuario);
             emprestimos.Add(emprestimo);
         }
 
-        public void ConsultarEmprestimos()
+        public void ConsultarEmprestimos ()
         {
             int index = 1;
             Console.WriteLine("Lista de Emprestimos");
