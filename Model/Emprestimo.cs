@@ -13,11 +13,22 @@
             IdUsuario = usuario.IdUsuario;
         }
 
+
+
         public void AtribuirLivro(Livro livro)
         {
             IdLivro = livro.IdLivro; 
         }
 
+        public void Consultarlivro(Livro livro)
+        {
+            //metodo que com base no id do livro, pega o nome do livro
+        }
+
+        public void ConsultarUsuario(Usuario usuario)
+        {
+            //metodo que com base no id do usuario, pega o nome do usuario+
+        }
         public void DevolverLivro(DateTime data)
         {
             if (data > DataDevolucao)
