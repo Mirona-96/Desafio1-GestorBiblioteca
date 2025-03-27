@@ -1,5 +1,6 @@
 ﻿
 #region Metodos
+using GestaoBiblioteca;
 using GestaoBiblioteca.Model;
 
 void ApresentarMenuInicial()
@@ -18,6 +19,11 @@ void ApresentarMenuLivro()
     Console.WriteLine("1 - Cadastrar Livro\n" +
         "2. Consultar Livros\n" +
         "3. Consultar um Livro.");
+}
+
+void ApresentarConsulta()
+{
+    Console.WriteLine("a. Editar        b.Eliminar");
 }
 
 Livro CadastrarLivro()
@@ -40,10 +46,78 @@ Livro CadastrarLivro()
     };
 }
 
+
 void LimparTela()
 {
     Console.WriteLine("Pressiona qualquer tecla para continuar...");
     Console.ReadKey();
     Console.Clear();
+}
+#endregion
+
+#region programa
+Gerenciador gerenciador = new Gerenciador();
+
+while (true)
+{
+    ApresentarMenuInicial();
+    Console.WriteLine("Escolha uma opção:");
+    string opcao = Console.ReadLine();
+    switch (opcao)
+    {
+        case "1":
+            ApresentarMenuLivro();
+            Console.WriteLine("Escolha uma opção:");
+            string opcaoLivro = Console.ReadLine();
+            switch (opcaoLivro)
+            {
+                case "1":
+                    var livro = CadastrarLivro();
+                    gerenciador.AdicionarLivros(livro);
+                    LimparTela();
+                    break;
+                case "2":
+                    gerenciador.ConsultarLivros();
+                    ApresentarConsulta();
+                    Console.WriteLine("Escolha uma opção:");
+                    string opcaoConsulta = Console.ReadLine();
+                    LimparTela();
+                    switch (opcaoConsulta)
+                    {
+                        case "a":
+                            Console.WriteLine("Escolha o livro a Editar");
+                            int index = int.Parse(Console.ReadLine());
+                            gerenciador.ActualizarLivro(index);
+                            break;
+                        case "b":
+                            Console.WriteLine("Escolha o livro a eliminar:");
+                            index = int.Parse(Console.ReadLine());
+                            gerenciador.RemoverLivro(index);
+                            Console.WriteLine("Eliminado");
+                            break;
+                        default:
+                            Console.WriteLine("Opção inválida.");
+                            break;
+                    }
+                    break;
+                case "3":
+                    Console.WriteLine("Insira o título ou autor do livro:");
+                    string consulta = Console.ReadLine();
+                    gerenciador.ConsultarUmLivro(consulta);
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+            break;
+        case "2":
+            break;
+        case "3":
+            break;
+        default:
+            Console.WriteLine("Opção inválida.");
+            break;
+    }
+    LimparTela();
 }
 #endregion

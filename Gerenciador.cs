@@ -16,6 +16,7 @@ namespace GestaoBiblioteca
 
         // LivroController livroController = new LivroController();
 
+        #region Livro
         public void AdicionarLivros(Livro livro)
         {
             try
@@ -34,10 +35,10 @@ namespace GestaoBiblioteca
         {
             int index = 1;
             Console.WriteLine("Lista de Livros");
-            Console.WriteLine("-", 50);
+            Console.WriteLine(new string('-', 80));
             foreach (var livro in livros)
             {
-                Console.WriteLine($" Livro #{index}\n" +
+                Console.WriteLine($" Livro #{index++}\n" +
                     $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
                     $"{"Título:",-20}   {livro.Titulo}\n" +
                     $"{"ISBN:",-20}   {livro.ISBN}\n" +
@@ -60,22 +61,75 @@ namespace GestaoBiblioteca
             }
         }
 
-        public void RemoverLivro(int index)
+        public void ActualizarLivro(int index)
         {
-            livros.RemoveAt(index);
+            if (index >= 0 && index < livros.Count)
+            {
+                var livro = livros[index];
+
+                Console.WriteLine($"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                $"{"Título:",-20}   {livro.Titulo}\n" +
+                $"{"ISBN:",-20}   {livro.ISBN}\n" +
+                $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
+
+                Console.WriteLine("Escolha o dado a ser actualizado:\n" +
+                    "1. Título" +
+                    "2. ISBN" +
+                    "3. Ano de Publicação");
+
+                int opcao = int.Parse(Console.ReadLine());
+                switch (opcao)
+                {
+                    case 1:
+                        Console.WriteLine("Insira o novo título do livro");
+                        livro.Titulo = Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.WriteLine("Insira o novo ISBN do livro");
+                        livro.ISBN = Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("Insira o novo ano de publicação do livro");
+                        livro.AnoPublicacao = int.Parse(Console.ReadLine());
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida.");
+                        break;
+                }
+            }
         }
 
+        public void RemoverLivro(int index)
+        {
+            if (index >= 0 && index < livros.Count)
+            {
+                livros.RemoveAt(index);
+            }
+            else
+            {
+                Console.WriteLine("Índice inválido.");
+            }
+        }
+
+        #endregion
+
+        #region Usuario
         public void CadastrarUsuario(Usuario usuario)
         {
             usuarios.Add(usuario);
         }
+        #endregion
 
+
+        #region Emprestimo
         public void CadastrarEmprestimo (Emprestimo emprestimo, Livro livro, Usuario usuario)
         {
             emprestimo.AtribuirLivro(livro);
             emprestimo.AtribuirUsuario(usuario);
             emprestimos.Add(emprestimo);
         }
+
+
 
         public void ConsultarEmprestimos ()
         {
@@ -84,7 +138,7 @@ namespace GestaoBiblioteca
             Console.WriteLine("-", 50);
             foreach (var emprestimo in emprestimos)
             {
-                Console.WriteLine($" Empréstimo #{index}\n" +
+                Console.WriteLine($" Empréstimo #{index++}\n" +
                     $"{"Codigo de Empréstimo:",-20} {emprestimo.IdEmprestimo}\n" +
                     $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro}\n" +
                     $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario}\n" +
@@ -105,5 +159,6 @@ namespace GestaoBiblioteca
                 Console.WriteLine("Devolução dentro do prazo");
             }
         }
+        #endregion
     }
 }
