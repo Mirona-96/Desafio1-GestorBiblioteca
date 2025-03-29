@@ -10,9 +10,9 @@ namespace GestaoBiblioteca
 {
     class Gerenciador
     {
-        public List<Livro> livros { get; } = [];
-        public List<Usuario> usuarios { get; } = [];
-        public List<Emprestimo> emprestimos { get; } = [];
+        public List<Livro> livros { get; } = new List<Livro>();
+        public List<Usuario> usuarios { get; } = new List<Usuario>();
+        public List<Emprestimo> emprestimos { get; } = new List<Emprestimo>();
 
         // LivroController livroController = new LivroController();
 
@@ -45,18 +45,18 @@ namespace GestaoBiblioteca
                 Console.WriteLine(new string('-', 80));
                 foreach (var livro in livros)
                 {
-                    Console.WriteLine(new string('-', 50));
                     Console.WriteLine($" Livro #{index++}\n" +
                         $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
                         $"{"Autor:",-20} {livro.Autor}\n" +
                         $"{"Título:",-20}   {livro.Titulo}\n" +
                         $"{"ISBN:",-20}   {livro.ISBN}\n" +
                         $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}. ");
+                    Console.WriteLine(new string('-', 60));
                 }
             }
         }
 
-        public void ConsultarUmLivro(string consulta)
+        public void ConsultarUmLivro()
         {
             if (livros.Count == 0)
             {
@@ -65,25 +65,33 @@ namespace GestaoBiblioteca
             }
             else
             {
+                Console.WriteLine("Insira o título ou autor do livro:");
+                string consulta = Console.ReadLine();
                 int index = 1;
-                Console.WriteLine("Livro(s) encontrado(s)");
-                Console.WriteLine(new string('-', 80));
-                foreach (var livro in livros)
+
+                var livrosEncontrados = livros.
+                Where(lv =>
+                lv.Titulo.Contains(consulta, StringComparison.OrdinalIgnoreCase) ||
+                lv.Autor.Contains(consulta, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (livrosEncontrados.Count == 0)
                 {
-                    if (livro.Titulo.Contains(consulta, StringComparison.OrdinalIgnoreCase) ||
-                        livro.Autor.Contains(consulta, StringComparison.OrdinalIgnoreCase))
+                    Console.WriteLine("Livro não encontrado.");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Livro(s) encontrado(s):");
+                    Console.WriteLine(new string('-', 80));
+                    foreach (var livro in livrosEncontrados)
                     {
-                        Console.WriteLine(new string('-', 50));
-                        Console.WriteLine($" Livro #{index++}\n" + 
-                        $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
-                        $"{"Autor:",-20} {livro.Autor}\n" +
-                        $"{"Título:",-20}   {livro.Titulo}\n" +
-                        $"{"ISBN:",-20}   {livro.ISBN}\n" +
-                        $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Livro não encontrado.");
+                        Console.WriteLine($" Livro #{index++}\n" +
+                            $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                            $"{"Autor:",-20} {livro.Autor}\n" +
+                            $"{"Título:",-20}   {livro.Titulo}\n" +
+                            $"{"ISBN:",-20}   {livro.ISBN}\n" +
+                            $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}. ");
+                        Console.WriteLine(new string('-', 60));
                     }
                 }
             }
@@ -136,43 +144,6 @@ namespace GestaoBiblioteca
             }
         }
 
-        public void ActualizarLivro(int index)
-        {
-            if (index >= 0 && index < livros.Count)
-            {
-                var livro = livros[index];
-
-                Console.WriteLine($"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
-                $"{"Título:",-20}   {livro.Titulo}\n" +
-                $"{"ISBN:",-20}   {livro.ISBN}\n" +
-                $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
-
-                Console.WriteLine("Escolha o dado a ser actualizado:\n" +
-                    "1. Título" +
-                    "2. ISBN" +
-                    "3. Ano de Publicação");
-
-                int opcao = int.Parse(Console.ReadLine());
-                switch (opcao)
-                {
-                    case 1:
-                        Console.WriteLine("Insira o novo título do livro");
-                        livro.Titulo = Console.ReadLine();
-                        break;
-                    case 2:
-                        Console.WriteLine("Insira o novo ISBN do livro");
-                        livro.ISBN = Console.ReadLine();
-                        break;
-                    case 3:
-                        Console.WriteLine("Insira o novo ano de publicação do livro");
-                        livro.AnoPublicacao = int.Parse(Console.ReadLine());
-                        break;
-                    default:
-                        Console.WriteLine("Opção inválida.");
-                        break;
-                }
-            }
-        }
 
         public void RemoverLivro(int index)
         {
@@ -197,7 +168,7 @@ namespace GestaoBiblioteca
 
 
         #region Emprestimo
-        public void CadastrarEmprestimo (Emprestimo emprestimo, Livro livro, Usuario usuario)
+        public void CadastrarEmprestimo(Emprestimo emprestimo, Livro livro, Usuario usuario)
         {
             emprestimo.AtribuirLivro(livro);
             emprestimo.AtribuirUsuario(usuario);
@@ -206,7 +177,7 @@ namespace GestaoBiblioteca
 
 
 
-        public void ConsultarEmprestimos ()
+        public void ConsultarEmprestimos()
         {
             int index = 1;
             Console.WriteLine("Lista de Emprestimos");
