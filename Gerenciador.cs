@@ -33,30 +33,58 @@ namespace GestaoBiblioteca
 
         public void ConsultarLivros()
         {
-            int index = 1;
-            Console.WriteLine("Lista de Livros");
-            Console.WriteLine(new string('-', 80));
-            foreach (var livro in livros)
+            if (livros.Count == 0)
             {
-                Console.WriteLine($" Livro #{index++}\n" +
-                    $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
-                    $"{"Título:",-20}   {livro.Titulo}\n" +
-                    $"{"ISBN:",-20}   {livro.ISBN}\n" +
-                    $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}. ");
+                Console.WriteLine("Nenhum livro cadastrado.");
+                return;
+            }
+            else
+            {
+                int index = 1;
+                Console.WriteLine("Lista de Livros");
+                Console.WriteLine(new string('-', 80));
+                foreach (var livro in livros)
+                {
+                    Console.WriteLine(new string('-', 50));
+                    Console.WriteLine($" Livro #{index++}\n" +
+                        $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                        $"{"Autor:",-20} {livro.Autor}\n" +
+                        $"{"Título:",-20}   {livro.Titulo}\n" +
+                        $"{"ISBN:",-20}   {livro.ISBN}\n" +
+                        $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}. ");
+                }
             }
         }
 
         public void ConsultarUmLivro(string consulta)
         {
-            foreach (var livro in livros)
+            if (livros.Count == 0)
             {
-                if (livro.Titulo.Contains(consulta, StringComparison.OrdinalIgnoreCase) ||
-                    livro.Autor.Contains(consulta, StringComparison.OrdinalIgnoreCase))
+                Console.WriteLine("Nenhum livro cadastrado.");
+                return;
+            }
+            else
+            {
+                int index = 1;
+                Console.WriteLine("Livro(s) encontrado(s)");
+                Console.WriteLine(new string('-', 80));
+                foreach (var livro in livros)
                 {
-                    Console.WriteLine($"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
-                    $"{"Título:",-20}   {livro.Titulo}\n" +
-                    $"{"ISBN:",-20}   {livro.ISBN}\n" +
-                    $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
+                    if (livro.Titulo.Contains(consulta, StringComparison.OrdinalIgnoreCase) ||
+                        livro.Autor.Contains(consulta, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine(new string('-', 50));
+                        Console.WriteLine($" Livro #{index++}\n" + 
+                        $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                        $"{"Autor:",-20} {livro.Autor}\n" +
+                        $"{"Título:",-20}   {livro.Titulo}\n" +
+                        $"{"ISBN:",-20}   {livro.ISBN}\n" +
+                        $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Livro não encontrado.");
+                    }
                 }
             }
         }
@@ -73,29 +101,38 @@ namespace GestaoBiblioteca
                 $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
 
                 Console.WriteLine("Escolha o dado a ser actualizado:\n" +
-                    "1. Título" +
-                    "2. ISBN" +
-                    "3. Ano de Publicação");
+                    "1. Autor\n" +
+                    "2. Título\n" +
+                    "3. ISBN\n" +
+                    "4. Ano de Publicação\n");
 
                 int opcao = int.Parse(Console.ReadLine());
                 switch (opcao)
                 {
                     case 1:
-                        Console.WriteLine("Insira o novo título do livro");
-                        livro.Titulo = Console.ReadLine();
+                        Console.WriteLine("Insira o Autor do livro");
+                        livro.Autor = Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Insira o novo ISBN do livro");
-                        livro.ISBN = Console.ReadLine();
+                        Console.WriteLine("Insira o título do livro");
+                        livro.Titulo = Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Insira o novo ano de publicação do livro");
+                        Console.WriteLine("Insira o ISBN do livro");
+                        livro.ISBN = Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.WriteLine("Insira o ano de publicação do livro");
                         livro.AnoPublicacao = int.Parse(Console.ReadLine());
                         break;
                     default:
                         Console.WriteLine("Opção inválida.");
                         break;
                 }
+            }
+            else
+            {
+                Console.WriteLine("Índice inválido.");
             }
         }
 
