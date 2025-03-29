@@ -1,6 +1,6 @@
 ﻿
 #region Metodos
-using GestaoBiblioteca;
+using GestaoBiblioteca.Controller;
 using GestaoBiblioteca.Model;
 
 class Program
@@ -99,7 +99,9 @@ class Program
 
 
         #region programa
-        Gerenciador gerenciador = new Gerenciador();
+        LivroController livroController = new LivroController();
+        UsuarioController usuarioController = new UsuarioController();
+        EmprestimoController emprestimoController = new EmprestimoController();
 
         while (true)
         {
@@ -116,11 +118,11 @@ class Program
                     {
                         case "1":
                             var livro = CadastrarLivro();
-                            gerenciador.AdicionarLivros(livro);
+                            livroController.AdicionarLivros(livro);
                             LimparTela();
                             break;
                         case "2":
-                            gerenciador.ConsultarLivros();
+                            livroController.ConsultarLivros();
                             ApresentarConsultaLivro();
                             Console.WriteLine("Escolha uma opção:");
                             string opcaoConsulta = Console.ReadLine();
@@ -131,13 +133,13 @@ class Program
                                     Console.WriteLine("Escolha o livro a Editar");
                                     int index = int.Parse(Console.ReadLine());
                                     Console.Clear();
-                                    gerenciador.ActualizarLivro(index - 1);
+                                    livroController.ActualizarLivro(index - 1);
                                     break;
                                 case "b":
                                     Console.WriteLine("Escolha o livro a eliminar:");
                                     index = int.Parse(Console.ReadLine());
 
-                                    gerenciador.RemoverLivro(index - 1);
+                                    livroController.RemoverLivro(index - 1);
                                     Console.WriteLine("Livro eliminado");
                                     LimparTela();
                                     break;
@@ -150,7 +152,7 @@ class Program
                             }
                             break;
                         case "3":
-                            gerenciador.ConsultarUmLivro();
+                            livroController.ConsultarUmLivro();
                             LimparTela();
                             break;
                         default:
@@ -166,12 +168,12 @@ class Program
                     {
                         case "1":
                             var Usuario = CadastrarUsuario();
-                            gerenciador.CadastrarUsuario(Usuario);
+                            usuarioController.CadastrarUsuario(Usuario);
                             LimparTela();
                             break;
 
                         case "2":
-                            gerenciador.ConsultarUsuarios();
+                            usuarioController.ConsultarUsuarios();
                             ApresentarConsultaUsuario();
                             Console.WriteLine("Escolha uma opção:");
                             string opcaoConsulta = Console.ReadLine();
@@ -182,12 +184,12 @@ class Program
                                     Console.WriteLine("Escolha o Usuário a Editar");
                                     int index = int.Parse(Console.ReadLine());
                                     Console.Clear();
-                                    gerenciador.ActualizarUsuario(index - 1);
+                                    usuarioController.ActualizarUsuario(index - 1);
                                     break;
                                 case "b":
                                     Console.WriteLine("Escolha o Usuário a eliminar:");
                                     index = int.Parse(Console.ReadLine());
-                                    gerenciador.RemoverUsuario(index - 1);
+                                    usuarioController.RemoverUsuario(index - 1);
                                     Console.WriteLine("Usuário eliminado");
                                     LimparTela();
                                     break;
