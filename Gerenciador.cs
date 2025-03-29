@@ -136,6 +136,44 @@ namespace GestaoBiblioteca
             }
         }
 
+        public void ActualizarLivro(int index)
+        {
+            if (index >= 0 && index < livros.Count)
+            {
+                var livro = livros[index];
+
+                Console.WriteLine($"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                $"{"Título:",-20}   {livro.Titulo}\n" +
+                $"{"ISBN:",-20}   {livro.ISBN}\n" +
+                $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
+
+                Console.WriteLine("Escolha o dado a ser actualizado:\n" +
+                    "1. Título" +
+                    "2. ISBN" +
+                    "3. Ano de Publicação");
+
+                int opcao = int.Parse(Console.ReadLine());
+                switch (opcao)
+                {
+                    case 1:
+                        Console.WriteLine("Insira o novo título do livro");
+                        livro.Titulo = Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.WriteLine("Insira o novo ISBN do livro");
+                        livro.ISBN = Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("Insira o novo ano de publicação do livro");
+                        livro.AnoPublicacao = int.Parse(Console.ReadLine());
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida.");
+                        break;
+                }
+            }
+        }
+
         public void RemoverLivro(int index)
         {
             if (index >= 0 && index < livros.Count)
