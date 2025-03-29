@@ -30,7 +30,7 @@ class Program
                 "3. Consultar um Livro.");
         }
 
-        void ApresentarConsulta()
+        void ApresentarConsultaLivro()
         {
             Console.WriteLine("a. Editar        b.Eliminar          c.Retornar");
         }
@@ -55,6 +55,38 @@ class Program
                 AnoPublicacao = anoPublicacao
             };
         }
+        #endregion
+
+
+        #region Usuarios
+
+        void ApresentarMenuUsuario()
+        {
+            Console.Clear();
+            Console.WriteLine(
+                "1. Cadastrar Usuario\n" +
+                "2. Consultar Usuarios\n");
+        }
+
+        void ApresentarConsultaUsuario()
+        {
+            Console.WriteLine("a. Editar        b.Eliminar          c.Retornar");
+        }
+
+        Usuario CadastrarUsuario()
+        {
+            Console.Clear();
+            Console.WriteLine("Insira o Nome do Usuário");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Insira o Email do Usuário");
+            string email = Console.ReadLine();
+            return new Usuario
+            {
+                Nome = nome,
+                Email = email
+            };
+        }
+
         #endregion
 
         void LimparTela()
@@ -89,7 +121,7 @@ class Program
                             break;
                         case "2":
                             gerenciador.ConsultarLivros();
-                            ApresentarConsulta();
+                            ApresentarConsultaLivro();
                             Console.WriteLine("Escolha uma opção:");
                             string opcaoConsulta = Console.ReadLine();
                             Console.Clear();
@@ -127,8 +159,47 @@ class Program
                     }
                     break;
                 case "2":
-                    break;
-                case "3":
+                    ApresentarMenuUsuario();
+                    Console.WriteLine("Escolha uma opção:");
+                    string opcaoUsuario = Console.ReadLine();
+                    switch (opcaoUsuario)
+                    {
+                        case "1":
+                            var Usuario = CadastrarUsuario();
+                            gerenciador.CadastrarUsuario(Usuario);
+                            LimparTela();
+                            break;
+
+                        case "2":
+                            gerenciador.ConsultarUsuarios();
+                            ApresentarConsultaUsuario();
+                            Console.WriteLine("Escolha uma opção:");
+                            string opcaoConsulta = Console.ReadLine();
+                            Console.Clear();
+                            switch (opcaoConsulta)
+                            {
+                                case "a":
+                                    Console.WriteLine("Escolha o Usuário a Editar");
+                                    int index = int.Parse(Console.ReadLine());
+                                    Console.Clear();
+                                    gerenciador.ActualizarUsuario(index - 1);
+                                    break;
+                                case "b":
+                                    Console.WriteLine("Escolha o Usuário a eliminar:");
+                                    index = int.Parse(Console.ReadLine());
+                                    gerenciador.RemoverUsuario(index - 1);
+                                    Console.WriteLine("Usuário eliminado");
+                                    LimparTela();
+                                    break;
+                                case "c":
+                                    return;
+                                default:
+                                    Console.WriteLine("Opção inválida.");
+                                    break;
+                            }
+                            break;
+                    } break;
+                        case "3":
                     break;
                 case "0":
                     Console.WriteLine("Fim de Execução.");
