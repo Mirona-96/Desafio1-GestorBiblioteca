@@ -263,11 +263,11 @@ class Program
                             LimparTela();
                             break;
                         case "2":
-                            emprestimoController.DevolverLivro();
+                            emprestimoController.DevolverLivro(livroController.livros, usuarioController.usuarios);
                             LimparTela();
                             break;
                         case "3":
-                            emprestimoController.ConsultarEmprestimos();
+                            emprestimoController.ConsultarEmprestimos(livroController.livros, usuarioController.usuarios); //chama a lista dos livros e dos usuarios
                             ApresentarMenuConsulta();
                             Console.WriteLine("Escolha uma opção:");
                             string opcaoConsulta = Console.ReadLine();

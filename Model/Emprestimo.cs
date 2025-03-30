@@ -30,5 +30,13 @@
             var usuario = usuarios.FirstOrDefault(x => x.IdUsuario == IdUsuario);
             return usuario != null ? usuario.Nome : "usuario não encontrado.";
         }
+
+        public void ValidarDadosEmprestimo()
+        {
+            if (DataDevolucao < DataEmprestimo)
+            {
+                throw new Exception("Data invalida.");
+            }
+        }
     }
 }

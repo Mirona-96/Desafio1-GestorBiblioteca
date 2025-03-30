@@ -8,7 +8,8 @@
         public string ISBN { get; set; }
         public int AnoPublicacao { get; set; }
 
-        public void ValidarDados()
+        public void ValidarDadosLivro
+            ()
         {
             if (string.IsNullOrEmpty(Titulo))
             {

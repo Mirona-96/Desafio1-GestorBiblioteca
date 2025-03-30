@@ -16,7 +16,7 @@ namespace GestaoBiblioteca.Controller
         {
             try
             {
-                livro.ValidarDados();
+                livro.ValidarDadosLivro();
             }
             catch (Exception erro)
             {

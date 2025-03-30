@@ -16,12 +16,20 @@ namespace GestaoBiblioteca.Controller
         #region Emprestimo
         public void CadastrarEmprestimo(Emprestimo emprestimo)
         {
+            try
+            {
+                emprestimo.ValidarDadosEmprestimo();
+            } catch (Exception erro)
+            {
+                Console.WriteLine($"Erro: Dado Invalido: {erro.Message}");
+                return;
+            }
             emprestimos.Add(emprestimo);
         }
 
 
 
-        public void ConsultarEmprestimos()
+        public void ConsultarEmprestimos(List<Livro>livros, List<Usuario>usuarios)
         {
             if (emprestimos.Count == 0)
             {
@@ -38,16 +46,17 @@ namespace GestaoBiblioteca.Controller
                     Console.WriteLine(
                         $" Empréstimo #{index++}\n" +
                         $"{"Codigo de Empréstimo:",-20} {emprestimo.IdEmprestimo}\n" +
-                        $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro}\n" +
-                        $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario}\n" +
+                        $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro(livros)}\n" +
+                        $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario(usuarios)}\n" +
                         $"{"Data do Empréstimo:",-20}  {emprestimo.DataEmprestimo}\n" +
                         $"{"Data da Devolução: ",-20} {emprestimo.DataDevolucao}");
-                }
+                    Console.WriteLine(new string('-', 50));
 
+                }
             }
         }
 
-        public void DevolverLivro()
+        public void DevolverLivro(List<Livro> livros, List<Usuario> usuarios)
         {
             if(emprestimos.Count == 0)
             {
@@ -56,7 +65,7 @@ namespace GestaoBiblioteca.Controller
             } 
             else
             {
-                ConsultarEmprestimos();
+                ConsultarEmprestimos(livros,usuarios);
                 Console.WriteLine("Escolha o empréstimo a devolver:");
                 int index = int.Parse(Console.ReadLine()) - 1;
                 var emprestimo = emprestimos[index];
