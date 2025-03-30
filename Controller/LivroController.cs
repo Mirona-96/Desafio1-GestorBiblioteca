@@ -40,7 +40,8 @@ namespace GestaoBiblioteca.Controller
                 Console.WriteLine(new string('-', 80));
                 foreach (var livro in livros)
                 {
-                    Console.WriteLine($" Livro #{index++}\n" +
+                    Console.WriteLine(
+                        $" Livro #{index++}\n" +
                         $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
                         $"{"Autor:",-20} {livro.Autor}\n" +
                         $"{"Título:",-20}   {livro.Titulo}\n" +
@@ -80,7 +81,8 @@ namespace GestaoBiblioteca.Controller
                     Console.WriteLine(new string('-', 80));
                     foreach (var livro in livrosEncontrados)
                     {
-                        Console.WriteLine($" Livro #{index++}\n" +
+                        Console.WriteLine(
+                            $" Livro #{index++}\n" +
                             $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
                             $"{"Autor:",-20} {livro.Autor}\n" +
                             $"{"Título:",-20}   {livro.Titulo}\n" +
@@ -98,12 +100,13 @@ namespace GestaoBiblioteca.Controller
             {
                 var livro = livros[index];
 
-                Console.WriteLine($"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
+                Console.WriteLine(
+                $"{"Codigo de Registo:",-20} {livro.IdLivro}\n" +
                 $"{"Título:",-20}   {livro.Titulo}\n" +
                 $"{"ISBN:",-20}   {livro.ISBN}\n" +
                 $"{"Ano de Publicação:",-20}  {livro.AnoPublicacao}.");
 
-                Console.WriteLine("Escolha o dado a ser actualizado:\n" +
+                Console.WriteLine("Escolha o dado a ser actualizado ou alterado:\n" +
                     "1. Autor\n" +
                     "2. Título\n" +
                     "3. ISBN\n" +
@@ -139,19 +142,19 @@ namespace GestaoBiblioteca.Controller
             }
         }
 
-
         public void RemoverLivro(int index)
         {
             if (index >= 0 && index < livros.Count)
             {
                 livros.RemoveAt(index);
+                const string mensagem = "Livro removido com sucesso.";
+                Console.WriteLine(mensagem);
             }
             else
             {
                 Console.WriteLine("Índice inválido.");
             }
         }
-
         #endregion
     }
 }

@@ -18,17 +18,17 @@
             IdLivro = livro.IdLivro; 
         }
 
-        public string ConsultarNomeLivro(Livro livro)
+        public string ConsultarNomeLivro(List<Livro> livros)
         {
             //metodo que com base no id do livro, pega o nome do livro
-            return livro.Titulo;
+            var livro = livros.FirstOrDefault(x => x.IdLivro == IdLivro);
+            return livro!= null? livro.Titulo: "livro não encontrado.";
         }
 
-        public string ConsultarNomeUsuario(Usuario usuario)
+        public string ConsultarNomeUsuario(List<Usuario> usuarios)
         {
-            return usuario.Nome;
+            var usuario = usuarios.FirstOrDefault(x => x.IdUsuario == IdUsuario);
+            return usuario != null ? usuario.Nome : "usuario não encontrado.";
         }
-
-
     }
 }

@@ -17,8 +17,6 @@ namespace GestaoBiblioteca.Controller
             usuarios.Add(usuario);
         }
 
-
-
         public void ConsultarUsuarios()
         {
             if (usuarios.Count == 0)
@@ -33,7 +31,8 @@ namespace GestaoBiblioteca.Controller
                 Console.WriteLine(new string('-', 80));
                 foreach (var usuario in usuarios)
                 {
-                    Console.WriteLine($" Usuário #{index++}\n" +
+                    Console.WriteLine(
+                        $" Usuário #{index++}\n" +
                         $"{"Codigo de Registo:",-20} {usuario.IdUsuario}\n" +
                         $"{"Nome:",-20} {usuario.Nome}\n" +
                         $"{"Email:",-20}   {usuario.Email}");
@@ -47,9 +46,11 @@ namespace GestaoBiblioteca.Controller
             if (index >= 0 && (index < usuarios.Count))
             {
                 var usuario = usuarios[index];
-                Console.WriteLine($"{"Codigo de Registo:",-20} {usuario.IdUsuario}\n" +
+                Console.WriteLine(
+                $"{"Codigo de Registo:",-20} {usuario.IdUsuario}\n" +
                 $"{"Nome:",-20}   {usuario.Nome}\n" +
                 $"{"Email:",-20}   {usuario.Email}.");
+
                 Console.WriteLine("Escolha o dado a ser actualizado:\n" +
                     "1. Nome\n" +
                     "2. Email\n");
@@ -80,13 +81,13 @@ namespace GestaoBiblioteca.Controller
             if (index >= 0 && index < usuarios.Count)
             {
                 usuarios.RemoveAt(index);
+                Console.WriteLine("Usuário eliminado");
             }
             else
             {
                 Console.WriteLine("Índice inválido.");
             }
         }
-
         #endregion
     }
 }
