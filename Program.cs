@@ -278,7 +278,7 @@ class Program
                                     Console.WriteLine("Escolha o empréstimo a Editar");
                                     int index = int.Parse(Console.ReadLine());
                                     Console.Clear();
-                                    emprestimoController.ActualizarEmprestimo(index - 1);
+                                    emprestimoController.ActualizarEmprestimo((index - 1), livroController.livros, usuarioController.usuarios);
                                     break;
                                 case "b":
                                     Console.WriteLine("Escolha o empréstimo a eliminar:");

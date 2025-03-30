@@ -85,15 +85,15 @@ namespace GestaoBiblioteca.Controller
             }
         }
 
-        public void ActualizarEmprestimo(int index)
+        public void ActualizarEmprestimo(int index, List<Livro>livros, List<Usuario>usuarios)
         {
             if(index >= 0 && (index < emprestimos.Count))
             {
                 var emprestimo = emprestimos[index];
                 Console.WriteLine(
                     $"{"Codigo de Empréstimo:",-20} {emprestimo.IdEmprestimo}\n" +
-                    $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro}\n" +
-                    $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario}\n" +
+                    $"{"Livro:",-20}   {emprestimo.ConsultarNomeLivro(livros)}\n" +
+                    $"{"Usuario:",-20}   {emprestimo.ConsultarNomeUsuario(usuarios)}\n" +
                     $"{"Data do Empréstimo:",-20}  {emprestimo.DataEmprestimo}\n" +
                     $"{"Data da Devolução: ",-20} {emprestimo.DataDevolucao}");
                 Console.WriteLine("Escolha o dado a ser actualizado:\n" +
