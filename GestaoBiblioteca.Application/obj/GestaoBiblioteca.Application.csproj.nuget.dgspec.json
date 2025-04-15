@@ -1,0 +1,220 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Application\\GestaoBiblioteca.Application.csproj": {}
+  },
+  "projects": {
+    "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Application\\GestaoBiblioteca.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Application\\GestaoBiblioteca.Application.csproj",
+        "projectName": "GestaoBiblioteca.Application",
+        "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Application\\GestaoBiblioteca.Application.csproj",
+        "packagesPath": "C:\\Users\\HomePC\\.nuget\\packages\\",
+        "outputPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HomePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj": {
+                "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj"
+              },
+              "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\GestaoBiblioteca.Infrastructure.csproj": {
+                "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\GestaoBiblioteca.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj",
+        "projectName": "GestaoBiblioteca.Core",
+        "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj",
+        "packagesPath": "C:\\Users\\HomePC\\.nuget\\packages\\",
+        "outputPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HomePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\GestaoBiblioteca.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\GestaoBiblioteca.Infrastructure.csproj",
+        "projectName": "GestaoBiblioteca.Infrastructure",
+        "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\GestaoBiblioteca.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\HomePC\\.nuget\\packages\\",
+        "outputPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\HomePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj": {
+                "projectPath": "E:\\Cursos\\Mentoria .Net\\Projectos\\Desafios\\1. Biblioteca\\GestaoBiblioteca.Core\\GestaoBiblioteca.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
